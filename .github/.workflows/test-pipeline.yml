@@ -1,0 +1,55 @@
+name: furst_test
+
+# stages:
+#   - pull
+#   - push
+
+# variables:
+#   # Define any environment variables needed for the tests
+#   # For example:
+#   # VARIABLE_NAME: "variable_value"
+
+# pull_job:
+#   stage: pull
+#   script:
+#     - echo "Pulling code from the repository..."
+#     # Add commands to pull the code repository
+#     # For example, if you are using Git:
+#     # - git clone YOUR_GIT_REPO_URL
+#     # - cd YOUR_PROJECT_DIRECTORY
+#   tags:
+#     # Define any specific runners or tags for this job
+#     # For example:
+#     # - runner_name
+
+# push_job:
+#   stage: push
+#   script:
+#     - echo "Running tests for push..."
+#     # Add commands to run the tests for push
+#     # For example, running unit tests using a testing framework:
+#     # - npm install  # Install dependencies if using Node.js
+#     # - npm test    # Run the unit tests
+#   tags:
+#     # Define any specific runners or tags for this job
+#     # For example:
+#     # - runner_name
+
+# # Add more jobs or stages as needed for your specific testing requirements
+
+on:
+  push:
+    branches:
+      - main
+  
+  pull-request:
+    branches:
+      - main
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test
+        run: go test ./...
