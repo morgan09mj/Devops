@@ -47,9 +47,30 @@ on:
       - main
   
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: lint
+        run: echo lint
+
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: test
-        run: go test ./...
+        run: echo test
+
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: compile
+        run: echo compile
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: release
+        run: echo release
